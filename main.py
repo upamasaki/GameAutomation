@@ -49,7 +49,7 @@ def norm(GameAuto):
 #以下、メインルーチン
 if __name__ == "__main__":
     
-    
+    # 
     GameAuto = GameAutomation.GameAutomation()
     GameAuto.sample()
     while 1:
