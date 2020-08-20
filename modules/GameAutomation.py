@@ -63,6 +63,16 @@ class GameAutomation:
             #pyautogui.click(none_x,none_y)
             return False
 
+    def serch_image2(self, img_path, wait_time, conf):
+        try:
+            img_x,img_y = pyautogui.locateCenterOnScreen(img_path, grayscale=True, confidence=conf)
+            print("{:27} is click ({:4}, {:4})".format(img_path, img_x, img_y))
+            time.sleep(wait_time)
+            return True
+        except:
+            print('{:27} is none'.format(img_path))
+            #pyautogui.click(none_x,none_y)
+            return False
 
     def serch_click_image3(self, img_path, img_path2, img_path3, wait_time, conf):
         try:
