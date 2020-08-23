@@ -230,6 +230,7 @@ def tiktan_main(GameAuto):
         GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
 
         time.sleep(1)
+        time.sleep(1)
 
 
 #以下、メインルーチン
