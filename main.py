@@ -267,19 +267,35 @@ def tiktan_main(GameAuto):
 
     while 1:
         print(">>>>>>>>> tiktan >>>>>>")
-        GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.8, -1000)
+        GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.5, -1000)
 
-        if(GameAuto.serch_click_image2('./img/tiktan/battle.PNG', 1, 0.8)):
+        if(GameAuto.serch_click_image2('./img/tiktan/battle.PNG', 1, 0.5)):
             pyautogui.keyDown('end')
             pyautogui.keyUp('end')
             time.sleep(1)
-            GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
-            time.sleep(30)
-        GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
+            GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.5)
+            time.sleep(3)
+        GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.5)
 
         time.sleep(1)
+
+
+def tiktan_main_linux(GameAuto):
+
+    while 1:
+        print(">>>>>>>>> tiktan >>>>>>")
+        GameAuto.serch_wheel_image2('./img/tiktan_linux/now_state.png', 1, 0.7, -1000)
+
+        if(GameAuto.serch_click_image2('./img/tiktan_linux/battle.png', 1, 0.8)):
+            pyautogui.keyDown('end')
+            pyautogui.keyUp('end')
+            time.sleep(1)
+            GameAuto.serch_click_image2('./img/tiktan_linux/come_back.png', 1, 0.8)
+            time.sleep(3)
+        GameAuto.serch_click_image2('./img/tiktan_linux/come_back.png', 1, 0.8)
+
         time.sleep(1)
-        time.sleep(1)
+
 
 
 #以下、メインルーチン
@@ -291,24 +307,13 @@ if __name__ == "__main__":
     #
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('--gname', default='tourabu', help='game name')    # 実数値(float)
+    parser.add_argument('--os', default='win', help='os info') 
 
     args = parser.parse_args()
     print(args)
 
     GameAuto = GameAutomation.GameAutomation()
     GameAuto.sample()
-<<<<<<< HEAD
-    while 1:
-        #Exercise()
-        #story()
-        #sakuya()
-        # norm(GameAuto)
-        # init(GameAuto)
-        if(GameAuto.serch_image2('./img/kyoshintoseijyo_note/battle_gage.png', 0, 0.8) and not GameAuto.serch_image2('./img/kyoshintoseijyo_note/outofmem.png', 0, 0.8)):
-            kyoshintoseijyo_battle_linux(GameAuto)
-        else:
-            kyoshintoseijyo_norm_linux(GameAuto)
-=======
     
     #Exercise()
     #story()
@@ -318,14 +323,16 @@ if __name__ == "__main__":
     print(args.gname)
     print(args.gname == 'tiktan')
     if(args.gname == 'tiktan'):
-        tiktan_main(GameAuto)
+        if(1):
+            tiktan_main(GameAuto)
+        else:
+            tiktan_main_linux(GameAuto)
     
     if(args.gname == 'tourabu'):
         tourabu_main(GameAuto)
 
     print("=========================")
         # get_mouse()
->>>>>>> master
         # tourabu(GameAuto)
         
 
