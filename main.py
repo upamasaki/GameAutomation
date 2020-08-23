@@ -31,6 +31,7 @@ pprint.pprint(sys.path)
 sys.path.append("./modules")
 
 import GameAutomation 
+import argparse
 
 # def sakuya():
 #     serch_click_image2('./img/work06_v3.png', 0, 0, 1, 0.9)
@@ -234,6 +235,50 @@ def tourabu(GameAuto):
     
     time.sleep(3)
 
+def kyoshintoseijyo_main(GameAuto):
+    init(GameAuto)
+    if(GameAuto.serch_click_image2('./img/kyoshintoseijyo/battle_gage.PNG', 1, 0.8)):
+        kyoshintoseijyo_battle(GameAuto)
+    else:
+        kyoshintoseijyo_norm(GameAuto)
+def tourabu_main(GameAuto):
+    while 1:
+        GameAuto.serch_click_image2('./img/tourabu/apply.PNG', 1, 0.8)
+
+        GameAuto.serch_click_image2('./img/tourabu/yuri.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/outai.PNG', 1, 0.8)
+
+        GameAuto.serch_click_image2('./img/tourabu/challenge_exercise.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/exercise_btn.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/exercise_btn2.PNG', 1, 0.8)
+        
+        GameAuto.serch_click_image2('./img/tourabu/result.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/result.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/result.PNG', 1, 0.8)
+
+        time.sleep(3)
+
+def get_mouse():
+
+    pos =  pyautogui.position()
+    print(pos)
+
+def tiktan_main(GameAuto):
+
+    while 1:
+        print(">>>>>>>>> tiktan >>>>>>")
+        GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.8, -1000)
+
+        if(GameAuto.serch_click_image2('./img/tiktan/battle.PNG', 1, 0.8)):
+            pyautogui.keyDown('end')
+            pyautogui.keyUp('end')
+            time.sleep(1)
+            GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
+            time.sleep(30)
+        GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
+
+        time.sleep(1)
+        time.sleep(1)
 
 
 #以下、メインルーチン
@@ -243,8 +288,15 @@ if __name__ == "__main__":
     #
     #
     #
+    parser = argparse.ArgumentParser(description='Process some integers.')
+    parser.add_argument('--gname', default='tourabu', help='game name')    # 実数値(float)
+
+    args = parser.parse_args()
+    print(args)
+
     GameAuto = GameAutomation.GameAutomation()
     GameAuto.sample()
+<<<<<<< HEAD
     while 1:
         #Exercise()
         #story()
@@ -255,6 +307,24 @@ if __name__ == "__main__":
             kyoshintoseijyo_battle_linux(GameAuto)
         else:
             kyoshintoseijyo_norm_linux(GameAuto)
+=======
+    
+    #Exercise()
+    #story()
+    #sakuya()
+    # norm(GameAuto)
+    print("=========================")
+    print(args.gname)
+    print(args.gname == 'tiktan')
+    if(args.gname == 'tiktan'):
+        tiktan_main(GameAuto)
+    
+    if(args.gname == 'tourabu'):
+        tourabu_main(GameAuto)
+
+    print("=========================")
+        # get_mouse()
+>>>>>>> master
         # tourabu(GameAuto)
         
 
