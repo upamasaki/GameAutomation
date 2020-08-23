@@ -279,6 +279,7 @@ def tiktan_main(GameAuto):
 
         time.sleep(1)
         time.sleep(1)
+        time.sleep(1)
 
 
 #以下、メインルーチン
