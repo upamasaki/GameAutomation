@@ -263,20 +263,30 @@ def get_mouse():
     pos =  pyautogui.position()
     print(pos)
 
+def tiktan_battle(GameAuto):
+    pyautogui.keyDown('end')
+    pyautogui.keyUp('end')
+    time.sleep(1)
+    GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
+    time.sleep(3)
+
 def tiktan_main(GameAuto):
 
     while 1:
         print(">>>>>>>>> tiktan >>>>>>")
-        GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.5, -1000)
+        GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.8, -1000)
 
-        if(GameAuto.serch_click_image2('./img/tiktan/battle.PNG', 1, 0.5)):
+        if(GameAuto.serch_click_image2('./img/tiktan/battle.PNG', 1, 0.8)):
             pyautogui.keyDown('end')
             pyautogui.keyUp('end')
             time.sleep(1)
-            GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.5)
-            time.sleep(3)
-        GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.5)
+            GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
+            time.sleep(30)
+        GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
 
+        if(GameAuto.serch_click_image2('./img/tiktan/chanp.PNG', 1, 0.8)):
+            GameAuto.serch_click_image2('./img/tiktan/chanp2.PNG', 1, 0.8)
+            tiktan_battle(GameAuto)
         time.sleep(1)
 
 
@@ -294,6 +304,7 @@ def tiktan_main_linux(GameAuto):
             time.sleep(3)
         GameAuto.serch_click_image2('./img/tiktan_linux/come_back.png', 1, 0.8)
 
+        time.sleep(1)
         time.sleep(1)
 
 
