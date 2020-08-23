@@ -274,15 +274,20 @@ def tiktan_main(GameAuto):
 
     while 1:
         print(">>>>>>>>> tiktan >>>>>>")
-        GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.8, -1000)
+        GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.8, -800)
 
-        if(GameAuto.serch_click_image2('./img/tiktan/battle.PNG', 1, 0.8)):
+
+        if(GameAuto.serch_click_image2('./img/tiktan/statusp.PNG', 1, 0.95)):
+            GameAuto.serch_click_image2('./img/tiktan/status1.PNG', 1, 0.8)
+            GameAuto.serch_click_image2('./img/tiktan/statusp_STR2.PNG', 1, 0.8)
             pyautogui.keyDown('end')
             pyautogui.keyUp('end')
-            time.sleep(1)
+            GameAuto.serch_click_image2('./img/tiktan/ok.PNG', 1, 0.8)
+
+
+        if(GameAuto.serch_click_image2('./img/tiktan/battle.PNG', 1, 0.8)):
+            tiktan_battle(GameAuto)
             GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
-            time.sleep(30)
-        GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
 
         if(GameAuto.serch_click_image2('./img/tiktan/chanp.PNG', 1, 0.8)):
             GameAuto.serch_click_image2('./img/tiktan/chanp2.PNG', 1, 0.8)
@@ -294,19 +299,25 @@ def tiktan_main_linux(GameAuto):
 
     while 1:
         print(">>>>>>>>> tiktan >>>>>>")
-        GameAuto.serch_wheel_image2('./img/tiktan_linux/now_state.png', 1, 0.7, -1000)
+        GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.5, -800)
 
-        if(GameAuto.serch_click_image2('./img/tiktan_linux/battle.png', 1, 0.8)):
+
+        if(GameAuto.serch_click_image2('./img/tiktan/statusp.PNG', 1, 0.5)):
+            GameAuto.serch_click_image2('./img/tiktan/status1.PNG', 1, 0.5)
+            GameAuto.serch_click_image2('./img/tiktan/statusp_STR2.PNG', 1, 0.5)
             pyautogui.keyDown('end')
             pyautogui.keyUp('end')
-            time.sleep(1)
-            GameAuto.serch_click_image2('./img/tiktan_linux/come_back.png', 1, 0.8)
-            time.sleep(3)
-        GameAuto.serch_click_image2('./img/tiktan_linux/come_back.png', 1, 0.8)
+            GameAuto.serch_click_image2('./img/tiktan/ok.PNG', 1, 0.5)
 
-        time.sleep(1)
-        time.sleep(1)
 
+        if(GameAuto.serch_click_image2('./img/tiktan/battle.PNG', 1, 0.5)):
+            tiktan_battle(GameAuto)
+            GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.5)
+
+        if(GameAuto.serch_click_image2('./img/tiktan/chanp.PNG', 1, 0.5)):
+            GameAuto.serch_click_image2('./img/tiktan/chanp2.PNG', 1, 0.5)
+            tiktan_battle(GameAuto)
+        time.sleep(1)
 
 
 #以下、メインルーチン
@@ -334,7 +345,7 @@ if __name__ == "__main__":
     print(args.gname)
     print(args.gname == 'tiktan')
     if(args.gname == 'tiktan'):
-        if(1):
+        if(0):
             tiktan_main(GameAuto)
         else:
             tiktan_main_linux(GameAuto)
