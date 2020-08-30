@@ -40,6 +40,7 @@ import argparse
 #     serch_click_image2('./img/decide_v3.PNG', 0, 0, 1, 0.9)
 #     time.sleep(2)
 
+count = 0
 
 def norm(GameAuto):
     
@@ -145,13 +146,15 @@ def kyoshintoseijyo_battle(GameAuto):
 
 
 def tourabu(GameAuto):
-    
+    print("===================================")
     if(GameAuto.serch_image2('./img/tourabu/honmaru.PNG', 1, 0.95)):
         GameAuto.serch_click_image2('./img/tourabu/mokuroku.PNG', 1, 0.8)
         GameAuto.serch_click_image2('./img/tourabu/mokuroku2.PNG', 1, 0.8)
     
-        GameAuto.serch_click_image2('./img/tourabu/go.PNG', 1, 0.8)
-        GameAuto.serch_click_image2('./img/tourabu/go2.PNG', 1, 0.8)
+        if(GameAuto.serch_click_image2('./img/tourabu/go.PNG', 1, 0.8)):
+            count += 1
+        if(GameAuto.serch_click_image2('./img/tourabu/go2.PNG', 1, 0.8)):
+            count += 1
 
     if(GameAuto.serch_image2('./img/tourabu/battle_mode.PNG', 1, 0.90)):
         GameAuto.serch_click_image2('./img/tourabu/battle.PNG', 1, 0.8)
@@ -193,6 +196,7 @@ def kyoshintoseijyo_main(GameAuto):
         kyoshintoseijyo_battle(GameAuto)
     else:
         kyoshintoseijyo_norm(GameAuto)
+
 def tourabu_main(GameAuto):
     while 1:
         GameAuto.serch_click_image2('./img/tourabu/apply.PNG', 1, 0.8)
@@ -204,6 +208,62 @@ def tourabu_main(GameAuto):
         GameAuto.serch_click_image2('./img/tourabu/exercise_btn.PNG', 1, 0.8)
         GameAuto.serch_click_image2('./img/tourabu/exercise_btn2.PNG', 1, 0.8)
         
+        GameAuto.serch_click_image2('./img/tourabu/result.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/result.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/result.PNG', 1, 0.8)
+
+        time.sleep(3)
+
+def tourabu_main_hanabi(GameAuto):
+    count = 0
+    while 1:
+        print("===================================")
+        print("====== {} times ============".format(count))
+        print("===================================")
+
+        if(GameAuto.serch_image2('./img/tourabu/honmaru.PNG', 1, 0.95)):
+            GameAuto.serch_click_image2('./img/tourabu/mokuroku.PNG', 1, 0.8)
+            GameAuto.serch_click_image2('./img/tourabu/mokuroku2.PNG', 1, 0.8)
+        
+        if(GameAuto.serch_click_image2('./img/tourabu/go.PNG', 1, 0.8)):
+            count += 1
+        if(GameAuto.serch_click_image2('./img/tourabu/go2.PNG', 1, 0.8)):
+            count += 1
+
+        if(GameAuto.serch_image2('./img/tourabu/battle_mode.PNG', 1, 0.90)):
+            GameAuto.serch_click_image2('./img/tourabu/battle.PNG', 1, 0.8)
+            GameAuto.serch_click_image2('./img/tourabu/choice.PNG', 1, 0.8)
+
+            # if(GameAuto.serch_image2('./img/tourabu/hirou.PNG', 1, 0.90)):
+            if(0):
+                GameAuto.serch_click_image2('./img/tourabu/back2.PNG', 1, 0.8)
+                GameAuto.serch_click_image2('./img/tourabu/mokuroku.PNG', 1, 0.8)
+                GameAuto.serch_click_image2('./img/tourabu/mokuroku2.PNG', 1, 0.8)
+                GameAuto.serch_click_image2('./img/tourabu/honmaru3.PNG', 1, 0.8)
+
+                for _ in tqdm(range(60*10)):
+                    time.sleep(1)
+            else:
+                GameAuto.serch_click_image2('./img/tourabu/battle2.PNG', 1, 0.8)
+                GameAuto.serch_click_image2('./img/tourabu/battle3.PNG', 1, 0.8)
+
+
+        GameAuto.serch_click_image2('./img/tourabu/decide.PNG', 1, 0.7)
+        GameAuto.serch_click_image2('./img/tourabu/hanabi.PNG', 1, 0.7)
+        GameAuto.serch_click_image2('./img/tourabu/get_kanana.PNG', 1, 0.7)
+        GameAuto.serch_click_image2('./img/tourabu/cc.PNG', 1, 0.7)
+
+        GameAuto.serch_click_image2('./img/tourabu/yuri.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/outai.PNG', 1, 0.8)
+
+        GameAuto.serch_click_image2('./img/tourabu/challenge_exercise.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/exercise_btn.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/exercise_btn2.PNG', 1, 0.8)
+
+        GameAuto.serch_click_image2('./img/tourabu/result2.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/result2.PNG', 1, 0.8)
+        GameAuto.serch_click_image2('./img/tourabu/result2.PNG', 1, 0.8)
+
         GameAuto.serch_click_image2('./img/tourabu/result.PNG', 1, 0.8)
         GameAuto.serch_click_image2('./img/tourabu/result.PNG', 1, 0.8)
         GameAuto.serch_click_image2('./img/tourabu/result.PNG', 1, 0.8)
@@ -236,7 +296,6 @@ def tiktan_main(GameAuto):
             pyautogui.keyUp('end')
             GameAuto.serch_click_image2('./img/tiktan/ok.PNG', 1, 0.8)
 
-
         if(GameAuto.serch_click_image2('./img/tiktan/battle.PNG', 1, 0.8)):
             tiktan_battle(GameAuto)
             GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.8)
@@ -261,6 +320,8 @@ if __name__ == "__main__":
     #
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('--gname', default='tourabu', help='game name')    # 実数値(float)
+    parser.add_argument('--mode', default='exercise', help='mode name')    # 実数値(float)
+
 
     args = parser.parse_args()
     print(args)
@@ -279,7 +340,10 @@ if __name__ == "__main__":
         tiktan_main(GameAuto)
     
     if(args.gname == 'tourabu'):
-        tourabu_main(GameAuto)
+        if(args.mode == 'exercise'):
+            tourabu_main(GameAuto)
+        if(args.mode == 'hanabi'):
+            tourabu_main_hanabi(GameAuto)
 
     print("=========================")
         # get_mouse()
