@@ -33,6 +33,9 @@ sys.path.append("./modules")
 import GameAutomation 
 import argparse
 
+duration = 1  # seconds
+freq = 440  # Hz
+
 # def sakuya():
 #     serch_click_image2('./img/work06_v3.png', 0, 0, 1, 0.9)
 #     serch_click_image2('./img/start_v4.png', 0, 0, 1, 0.9)
@@ -298,17 +301,38 @@ def tiktan_main(GameAuto):
 def tiktan_main_linux(GameAuto):
 
     while 1:
-        print(">>>>>>>>> tiktan >>>>>>")
-        GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.5, -800)
+        print(">>>>>>>>> tiktan linux>>>>>>")
+        pyautogui.keyDown('home')
+        pyautogui.keyUp('home')
+        GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.5, -3)
+
+        if(GameAuto.serch_click_image2('./img/tiktan/champ1.png', 1, 0.8)):
+            GameAuto.serch_click_image2('./img/tiktan/champ2.png', 1, 0.8)
 
 
-        if(GameAuto.serch_click_image2('./img/tiktan/statusp.PNG', 1, 0.5)):
+        if(not GameAuto.serch_click_image2('./img/tiktan/statusp3.png', 1, 0.85)):
+            # os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
             GameAuto.serch_click_image2('./img/tiktan/status1.PNG', 1, 0.5)
             GameAuto.serch_click_image2('./img/tiktan/statusp_STR2.PNG', 1, 0.5)
+            GameAuto.serch_click_image2('./img/tiktan/skill0.png', 1, 0.8)
+
+            pyautogui.keyDown('tab')
+            pyautogui.keyUp('tab')
+            pyautogui.keyDown('tab')
+            pyautogui.keyUp('tab')
+
+            # pyautogui.keyDown('tab')
+            # pyautogui.keyUp('tab')
             pyautogui.keyDown('end')
             pyautogui.keyUp('end')
+            # raise
             GameAuto.serch_click_image2('./img/tiktan/ok.PNG', 1, 0.5)
+            GameAuto.serch_click_image2('./img/tiktan/ok.PNG', 1, 0.5)
+            GameAuto.serch_click_image2('./img/tiktan/come_back.PNG', 1, 0.5)
+            GameAuto.serch_wheel_image2('./img/tiktan/now_state.PNG', 1, 0.5, -3)
 
+        
+        
 
         if(GameAuto.serch_click_image2('./img/tiktan/battle.PNG', 1, 0.5)):
             tiktan_battle(GameAuto)
@@ -326,7 +350,7 @@ if __name__ == "__main__":
     # 
     #
     #
-    #
+
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('--gname', default='tourabu', help='game name')    # 実数値(float)
     parser.add_argument('--os', default='win', help='os info') 
