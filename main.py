@@ -234,6 +234,9 @@ def tourabu_main_hanabi(GameAuto):
             GameAuto.serch_click_image2('./img/tourabu/battle.PNG', 1, 0.8)
             GameAuto.serch_click_image2('./img/tourabu/choice.PNG', 1, 0.8)
 
+            #####################################
+            # 疲労時
+            #
             # if(GameAuto.serch_image2('./img/tourabu/hirou.PNG', 1, 0.90)):
             if(0):
                 GameAuto.serch_click_image2('./img/tourabu/back2.PNG', 1, 0.8)
