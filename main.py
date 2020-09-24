@@ -408,6 +408,18 @@ def tiktan_main_linux(GameAuto):
         time.sleep(1)
 
 
+def uchu_main(GameAuto):
+    while 1:
+        print(">>>>>>>>> uchu >>>>>>")
+
+        GameAuto.serch_click_image2('./img/uchu/start.png', 1, 0.8)
+        GameAuto.serch_click_image2('./img/uchu/close.png', 1, 0.7)
+        GameAuto.serch_click_image2('./img/uchu/close2.png', 1, 0.7)
+        GameAuto.serch_click_image2('./img/uchu/close3.png', 1, 0.8)
+        GameAuto.serch_click_image2('./img/uchu/retry.png', 1, 0.8)
+
+        time.sleep(2)
+
 #以下、メインルーチン
 if __name__ == "__main__":
     
@@ -432,19 +444,9 @@ if __name__ == "__main__":
     #sakuya()
     # norm(GameAuto)
     print("=========================")
-    print(args.gname)
-    print(args.gname == 'tiktan')
-    if(args.gname == 'tiktan'):
-        if(0):
-            tiktan_main(GameAuto)
-        else:
-            tiktan_main_linux(GameAuto)
-    
-    if(args.gname == 'tourabu'):
-        if(args.mode == 'exercise'):
-            tourabu_main(GameAuto)
-        if(args.mode == 'hanabi'):
-            tourabu_main_hanabi(GameAuto)
+
+    uchu_main(GameAuto)
+
 
     print("=========================")
         # get_mouse()
