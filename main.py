@@ -29,7 +29,6 @@ def uchu_main(GameAuto):
         GameAuto.serch_click_image2('./img/uchu/retry.png', 1, 0.8)
         time.sleep(2)
 
-
 def sample2(GameAuto):
     while 1:
         GameAuto.press('e')
@@ -85,6 +84,28 @@ def kyoshin_seijo_event_humetsu(GameAuto):
         time.sleep(2)
 
 
+def kyoshin_seijo_event_oujya(GameAuto):
+    while 1:
+        eval_mode = True
+        
+        ###############################################
+        # 通常の戦闘
+        #
+        GameAuto.serch_click_image2(img_path='./img/kyoshintoseijyo/battle7.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=eval_mode)
+        GameAuto.serch_click_image2(img_path='./img/kyoshintoseijyo/battle8.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=eval_mode)
+        GameAuto.serch_click_image2(img_path='./img/kyoshintoseijyo/come_back_v3.PNG', wait_time=3, conf=0.8, offset=(0, 0), return_loc=eval_mode)
+
+
+
+        ###############################################
+        # オーダーの獲得
+        #
+        GameAuto.serch_click_image2(img_path='./img/kyoshintoseijyo/order_v3.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=eval_mode)
+        GameAuto.serch_click_image2(img_path='./img/kyoshintoseijyo/order_v3.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=eval_mode)
+        GameAuto.serch_click_image2(img_path='./img/kyoshintoseijyo/item_get_v3.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=eval_mode)
+        GameAuto.serch_click_image2(img_path='./img/kyoshintoseijyo/ok8.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=eval_mode)
+        GameAuto.serch_click_image2(img_path='./img/kyoshintoseijyo/close4.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=eval_mode)
+
 #以下、メインルーチン
 if __name__ == "__main__":
        
@@ -93,7 +114,8 @@ if __name__ == "__main__":
     # uchu_main(GameAuto)
     # sample2(GameAuto)
     # final_gear(GameAuto)
-    kyoshin_seijo_event_humetsu(GameAuto)
+    # kyoshin_seijo_event_humetsu(GameAuto)
+    kyoshin_seijo_event_oujya(GameAuto)
     print("=========================")
 
         
