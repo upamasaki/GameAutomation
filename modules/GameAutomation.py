@@ -52,7 +52,29 @@ class GameAutomation:
         except Exception as e:
             print('{:50} is none [{}]'.format(img_path, e))
             return False
+
+    ###################################
+    # 対象の画像を検索しクリック(高速版)
+    #
+    def serch_click_image3(self, img_path, wait_time, conf, offset=(0, 0), return_loc=True):
+        try:
+            # 画像の位置を特定
+            img_x, img_y = pyautogui.locateCenterOnScreen(img_path, grayscale=True, confidence=conf)
+
+            # オフセット分を計算
+            img_x = img_x + offset[0]
+            img_y = img_y + offset[1]
+
+            # 対象位置へ移動
+            pyautogui.click(img_x,img_y)
+
+            return True
+
+        except Exception as e:
+            print('{:50} is none [{}]'.format(img_path, e))
+            return False
             
+
     ###################################
     # 対象の画像を検索しその位置まで移動
     #
