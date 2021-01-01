@@ -107,8 +107,29 @@ class GameAutomation:
             print('{:50} is none'.format(img_path))
             return False
 
+    ###################################
+    # 対象の画像を検索しその位置でドラッグ操作
+    #
+    def serch_drag_image(self, img_path, wait_time, conf, offset=(0, 0), return_loc=True, drag_time=1):
+        try:
+            # 画像の位置を特定
+            img_x, img_y = pyautogui.locateCenterOnScreen(img_path, grayscale=True, confidence=conf)
+
+            # 対象位置へ移動
+            pyautogui.moveTo(img_x, img_y, duration=0)
+
+            # ドラッグ操作
+            pyautogui.dragTo(img_x + offset[0], img_y + offset[1], drag_time, button='left')
+
+            return True
+
+        except Exception as e:
+            print('{:50} is none [{}]'.format(img_path, e))
+            return False
+
     def press(self, target_key):
         pyautogui.keyDown(target_key)
         # pyautogui.press(target_key)
+
 
 

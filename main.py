@@ -13,6 +13,8 @@ import logging
 import threading
 import time
 
+##PyAutoGUIのモジュール
+import pyautogui
 
 count = 0
 
@@ -166,16 +168,24 @@ def kyoshin_seijo_event_oujya(GameAuto):
 def DOA_XVV(GameAuto):
     while 1:
         eval_mode = True
-        GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v1.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
-        GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v1.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
-        GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v1.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
-        GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v2.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
-        GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v2.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
-        GameAuto.serch_click_image2(img_path='./img/doaxvv/skip.PNG', wait_time=0, conf=0.7, offset=(0, -20), return_loc=eval_mode)
-        GameAuto.serch_click_image2(img_path='./img/doaxvv/skip.PNG', wait_time=0, conf=0.7, offset=(0, -20), return_loc=eval_mode)
-        GameAuto.serch_click_image2(img_path='./img/doaxvv/result.PNG', wait_time=0, conf=0.7, offset=(0, -10), return_loc=eval_mode)
-        GameAuto.serch_click_image2(img_path='./img/doaxvv/event_Arank.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
-        time.sleep(2)
+        # GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v1.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
+        # GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v1.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
+        # GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v1.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
+        # GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v2.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
+        # GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v2.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
+
+        # GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v4.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
+        GameAuto.serch_click_image2(img_path='./img/doaxvv/decide.PNG', wait_time=0, conf=0.7, offset=(0, 0), return_loc=eval_mode)
+        GameAuto.serch_click_image2(img_path='./img/doaxvv/skip_v2.PNG', wait_time=0, conf=0.7, offset=(0, 0), return_loc=eval_mode)
+        GameAuto.serch_click_image2(img_path='./img/doaxvv/start_v4.PNG', wait_time=0, conf=0.7, offset=(0, 0), return_loc=eval_mode)
+
+
+
+        # GameAuto.serch_click_image2(img_path='./img/doaxvv/skip.PNG', wait_time=0, conf=0.7, offset=(0, -20), return_loc=eval_mode)
+        # GameAuto.serch_click_image2(img_path='./img/doaxvv/skip.PNG', wait_time=0, conf=0.7, offset=(0, -20), return_loc=eval_mode)
+        # GameAuto.serch_click_image2(img_path='./img/doaxvv/result.PNG', wait_time=0, conf=0.7, offset=(0, -10), return_loc=eval_mode)
+        # GameAuto.serch_click_image2(img_path='./img/doaxvv/event_Arank.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
+        time.sleep(5)
 
 
 
@@ -273,6 +283,42 @@ def youjyo_senki_battle(GameAuto):
 def youjyo_senki_story(GameAuto):
 
     while 1:
+
+        ##########################################
+        # メニュー画面関係
+        #
+        # 進行中の章がなければnewのマークがある章を進める
+        if(not GameAuto.serch_click_image3(img_path='./img/youjyo/story/stage_new_v3.PNG', wait_time=1, conf=0.7, offset=(10, 10), return_loc=True)):
+            # new マークがない場合は下へスクロール
+            GameAuto.serch_drag_image(img_path='./img/youjyo/story/stage_clear.PNG', wait_time=1, conf=0.8, offset=(0, -50))
+        if(not GameAuto.serch_click_image3(img_path='./img/youjyo/story/stage_new_v2.PNG', wait_time=1, conf=0.7, offset=(10, 10), return_loc=True)):
+            # new マークがない場合は下へスクロール
+            GameAuto.serch_drag_image(img_path='./img/youjyo/story/stage_clear.PNG', wait_time=1, conf=0.8, offset=(0, -50))
+        # 進行中の章があればその章を進める
+        GameAuto.serch_click_image3(img_path='./img/youjyo/story/now_stage.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+
+        GameAuto.serch_click_image3(img_path='./img/youjyo/story/new_chapter.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+        
+        # チェックボックスのあるバトルパートを行う
+        if(not GameAuto.serch_click_image3(img_path='./img/youjyo/story/battle_check3.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)):
+            if(GameAuto.serch_click_image3(img_path='./img/youjyo/story/unopened.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)):
+                # チェックボックスがない場合はストーリーを見る
+                GameAuto.serch_click_image3(img_path='./img/youjyo/story/stage_v2.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+            else:
+                # 未開放バトルパートがなくなったら戻る
+                if(GameAuto.serch_click_image3(img_path='./img/youjyo/story/battle_info.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)):
+                    GameAuto.serch_click_image3(img_path='./img/youjyo/story/stage_back.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+
+        # ストーリーはskipする
+        GameAuto.serch_click_image3(img_path='./img/youjyo/story/skip.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+
+        GameAuto.serch_click_image3(img_path='./img/youjyo/story/stage_ok.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+        GameAuto.serch_click_image3(img_path='./img/youjyo/story/stage_go.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+
+
+        ##########################################
+        # バトル関係
+        #
         GameAuto.serch_click_image3(img_path='./img/youjyo/miss_comp.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
         GameAuto.serch_click_image3(img_path='./img/youjyo/next.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
         GameAuto.serch_click_image3(img_path='./img/youjyo/item_get.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
@@ -282,13 +328,7 @@ def youjyo_senki_story(GameAuto):
             GameAuto.serch_click_image3(img_path='./img/youjyo/battle_ok.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
             GameAuto.serch_click_image3(img_path='./img/youjyo/battle_ok.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
         
-        GameAuto.serch_click_image3(img_path='./img/youjyo/new_chapter.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
-        GameAuto.serch_click_image3(img_path='./img/youjyo/stage_new.PNG', wait_time=1, conf=0.7, offset=(10, 10), return_loc=True)
-        GameAuto.serch_click_image3(img_path='./img/youjyo/stage_new_v2.PNG', wait_time=1, conf=0.7, offset=(10, 10), return_loc=True)
-        GameAuto.serch_click_image3(img_path='./img/youjyo/stage_v2.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
-        GameAuto.serch_click_image3(img_path='./img/youjyo/stage_ok.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
-        GameAuto.serch_click_image3(img_path='./img/youjyo/skip.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
-        GameAuto.serch_click_image3(img_path='./img/youjyo/stage_go.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+
         print("sleep........")
         time.sleep(1)
     
@@ -357,9 +397,16 @@ if __name__ == "__main__":
     # kyoshin_seijo_event_oujya(GameAuto)
     # youjyo_senki(GameAuto)
     # youjyo_senki_battle(GameAuto)
-    narukore_Promotion_exam(GameAuto)
-    # youjyo_senki_story(GameAuto)
+    # narukore_Promotion_exam(GameAuto)
+    youjyo_senki_story(GameAuto)
     # DOA_XVV(GameAuto)
+    # for _ in range(5):
+    #     print("sleep.....")
+    #     time.sleep(1)
+    # for _ in range(20):
+    #     print("click")
+    #     pyautogui.moveTo( 768,  628, duration=0)
+    #     # pyautogui.click(1386, 820)
     print("=========================")
 
         
