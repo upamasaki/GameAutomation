@@ -159,18 +159,35 @@ class YoujyoSenki(GameAutomation):
             ##########################################
             # メニュー画面関係
             #
-            # 進行中の章がなければnewのマークがある章を進める
-            if(not self.serch_click_image3(img_path='./img/youjyo/story/stage_new_v3.PNG', wait_time=1, conf=0.7, offset=(10, 10), return_loc=True)):
-                # new マークがない場合は下へスクロール
-                self.serch_drag_image(img_path='./img/youjyo/story/stage_clear.PNG', wait_time=1, conf=0.8, offset=(0, -50))
-            if(not self.serch_click_image3(img_path='./img/youjyo/story/stage_new_v2.PNG', wait_time=1, conf=0.7, offset=(10, 10), return_loc=True)):
-                # new マークがない場合は下へスクロール
-                self.serch_drag_image(img_path='./img/youjyo/story/stage_clear.PNG', wait_time=1, conf=0.8, offset=(0, -50))
-            # 進行中の章があればその章を進める
-            self.serch_click_image3(img_path='./img/youjyo/story/now_stage.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+            # ---------------------------------------
+            # 章の選択
+            # ---------------------------------------
+            #
+            if(self.serch_image2(img_path='./img/youjyo/story/scenario_selection.PNG', wait_time=1, conf=0.8)):
+                # 下へスクロール   
+                self.serch_drag_image(img_path='./img/youjyo/story/stage_clear.PNG', wait_time=1, conf=0.8, offset=(0, -100))
+                self.serch_drag_image(img_path='./img/youjyo/story/stage_comp.PNG', wait_time=1, conf=0.8, offset=(0, -100))
+
+                if(not self.serch_click_image3(img_path='./img/youjyo/story/now_stage_v2.PNG', wait_time=1, conf=0.9, offset=(10, 10), return_loc=True)):
+                    #
+                    # 進行中の章があればその章を進める
+                    self.serch_click_image3(img_path='./img/youjyo/story/now_stage.PNG', wait_time=1, conf=0.9, offset=(0, 0), return_loc=True)
+                    #
+                    # 進行中の章がなければnewのマークがある章を進める
+                    self.serch_click_image3(img_path='./img/youjyo/story/stage_new_v3.PNG', wait_time=1, conf=0.7, offset=(10, 10), return_loc=True)
+                    self.serch_click_image3(img_path='./img/youjyo/story/stage_new_v2.PNG', wait_time=1, conf=0.7, offset=(10, 10), return_loc=True)
+
 
             self.serch_click_image3(img_path='./img/youjyo/story/new_chapter.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
-            
+            #
+            # ---------------------------------------
+            # バトルパートの選択
+            # ---------------------------------------
+            #
+            # 未開放が画面内に無い場合はスクロール
+            if(not self.serch_image2(img_path='./img/youjyo/story/unopened.PNG', wait_time=1, conf=0.8)):
+                self.serch_drag_image(img_path='./img/youjyo/story/battle_name.PNG', wait_time=1, conf=0.8, offset=(0, -100))
+            #
             # チェックボックスのあるバトルパートを行う
             if(not self.serch_click_image3(img_path='./img/youjyo/story/battle_check3.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)):
                 if(self.serch_click_image3(img_path='./img/youjyo/story/unopened.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)):

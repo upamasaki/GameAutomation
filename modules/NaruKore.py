@@ -23,7 +23,7 @@ class NaruKore(GameAutomation):
             self.serch_click_image3(img_path='./img/narukore/next.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
             self.serch_click_image3(img_path='./img/narukore/mission_start.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
             self.serch_click_image3(img_path='./img/narukore/message.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
-            self.serch_click_image3(img_path='./img/narukore/auto_play.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+            self.serch_click_image3(img_path='./img/narukore/auto_play.PNG', wait_time=1, conf=0.9, offset=(0, 0), return_loc=True)
             self.serch_click_image3(img_path='./img/narukore/total_score.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
             self.serch_click_image3(img_path='./img/narukore/result_pt.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
             self.serch_click_image3(img_path='./img/narukore/pt_tortal.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
@@ -32,6 +32,9 @@ class NaruKore(GameAutomation):
             self.serch_click_image3(img_path='./img/narukore/next_promotion.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
             self.serch_click_image3(img_path='./img/narukore/shinobi_rank.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
             self.serch_click_image3(img_path='./img/narukore/ability.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+            self.serch_click_image3(img_path='./img/narukore/action.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
+
+            
             # self.serch_click_image3(img_path='./img/narukore/no.PNG', wait_time=2, conf=0.8, offset=(0, 0), return_loc=True)
             # self.serch_click_image3(img_path='./img/narukore/yes_v2.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=True)
 

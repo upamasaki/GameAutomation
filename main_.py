@@ -187,8 +187,6 @@ def DOA_XVV(GameAuto):
         # GameAuto.serch_click_image2(img_path='./img/doaxvv/event_Arank.PNG', wait_time=0, conf=0.7, offset=(100, 0), return_loc=eval_mode)
         time.sleep(5)
 
-
-
 def youjyo_senki(GameAuto):
 
     counter = 0
@@ -223,9 +221,6 @@ def youjyo_senki(GameAuto):
         # GameAuto.serch_click_image2(img_path='./img/kyoshintoseijyo/close3.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=eval_mode)
         # GameAuto.serch_click_image2(img_path='./img/kyoshintoseijyo/ok6.PNG', wait_time=1, conf=0.8, offset=(0, 0), return_loc=eval_mode)
         
-
-
-
 def youjyo_senki_multi(GameAuto):
 
     def _syorui_worker(img_path=None, count=10):
@@ -258,7 +253,6 @@ def youjyo_senki_multi(GameAuto):
         # t.setDaemon(True)
         t.start()
   
-
 def youjyo_senki_battle(GameAuto):
 
     def _syorui_worker():

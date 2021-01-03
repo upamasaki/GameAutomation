@@ -58,6 +58,9 @@ class GameAutomation:
     #
     def serch_click_image3(self, img_path, wait_time, conf, offset=(0, 0), return_loc=True):
         try:
+            # 現在位置を取得
+            loc = pyautogui.position()
+
             # 画像の位置を特定
             img_x, img_y = pyautogui.locateCenterOnScreen(img_path, grayscale=True, confidence=conf)
 
@@ -67,7 +70,10 @@ class GameAutomation:
 
             # 対象位置へ移動
             pyautogui.click(img_x,img_y)
+            print("{:50} is click ({:4}, {:4})".format(img_path, img_x, img_y))
 
+            pyautogui.moveTo(loc[0], loc[1], duration=0)
+            time.sleep(wait_time)
             return True
 
         except Exception as e:
@@ -80,7 +86,7 @@ class GameAutomation:
     #
     def serch_image2(self, img_path, wait_time, conf):
         try:
-            img_x,img_y = pyautogui.locateCenterOnScreen(img_path, grayscale=True, confidence=conf)
+            img_x, img_y = pyautogui.locateCenterOnScreen(img_path, grayscale=True, confidence=conf)
             print("{:50} is serch ({:4}, {:4})".format(img_path, img_x, img_y))
             time.sleep(wait_time)
             return True
